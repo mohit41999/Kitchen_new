@@ -427,8 +427,8 @@ class _MenuDetailScreenState extends State<MenuDetailScreen> {
           decoration: BoxDecoration(
               color: AppConstant.appColor,
               borderRadius: BorderRadius.circular(100)),
-          width: 40,
           height: 40,
+          width: 40,
           child: Center(
             child: Image.asset(
               mealIcon(meall),
@@ -455,7 +455,7 @@ class _MenuDetailScreenState extends State<MenuDetailScreen> {
     switch (meal) {
       case 'Breakfast':
         return Res.ic_breakfast;
-      case 'Lunch':
+      case 'Lunch&Dinner':
         return Res.ic_dinner;
       case 'Dinner':
         return Res.ic_dinner;

@@ -270,7 +270,6 @@ class _AddOfferScreenState extends State<AddOfferScreen> {
                       },
                       child: Container(
                         height: 40,
-                        width: 110,
                         margin: EdgeInsets.only(left: 16),
                         decoration: BoxDecoration(
                             color: isSelect == 2
@@ -279,7 +278,7 @@ class _AddOfferScreenState extends State<AddOfferScreen> {
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(
                           child: Text(
-                            "Lunch",
+                            "Lunch & Dinner",
                             style: TextStyle(
                                 color:
                                     isSelect == 2 ? Colors.white : Colors.black,
@@ -290,35 +289,35 @@ class _AddOfferScreenState extends State<AddOfferScreen> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        setState(() {
-                          isSelect = 3;
-                        });
-                      },
-                      child: Container(
-                        height: 40,
-                        width: 110,
-                        margin: EdgeInsets.only(left: 16),
-                        decoration: BoxDecoration(
-                            color: isSelect == 3
-                                ? Color(0xffFFA451)
-                                : Color(0xffF3F6FA),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            "Dinner",
-                            style: TextStyle(
-                                color:
-                                    isSelect == 3 ? Colors.white : Colors.black,
-                                fontSize: 14,
-                                fontFamily: AppConstant.fontRegular),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Expanded(
+                  //   child: InkWell(
+                  //     onTap: () {
+                  //       setState(() {
+                  //         isSelect = 3;
+                  //       });
+                  //     },
+                  //     child: Container(
+                  //       height: 40,
+                  //       width: 110,
+                  //       margin: EdgeInsets.only(left: 16),
+                  //       decoration: BoxDecoration(
+                  //           color: isSelect == 3
+                  //               ? Color(0xffFFA451)
+                  //               : Color(0xffF3F6FA),
+                  //           borderRadius: BorderRadius.circular(10)),
+                  //       child: Center(
+                  //         child: Text(
+                  //           "Dinner",
+                  //           style: TextStyle(
+                  //               color:
+                  //                   isSelect == 3 ? Colors.white : Colors.black,
+                  //               fontSize: 14,
+                  //               fontFamily: AppConstant.fontRegular),
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Expanded(
                     child: InkWell(
                       onTap: () {

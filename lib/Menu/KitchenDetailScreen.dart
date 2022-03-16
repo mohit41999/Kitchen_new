@@ -311,7 +311,7 @@ class _KitchenDetailScreenState extends State<KitchenDetailScreen> {
               Container(
                 height: 200,
                 child: GridView.count(
-                  crossAxisCount: 3,
+                  crossAxisCount: 2,
                   childAspectRatio: 2 / 1,
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
@@ -577,8 +577,8 @@ List<Days> days = <Days>[
 
 List<Meals> meals = <Meals>[
   Meals(title: 'Breakfast', isCheckedMeals: false),
-  Meals(title: 'Lunch', isCheckedMeals: false),
-  Meals(title: 'Dinner', isCheckedMeals: false),
+  Meals(title: 'Lunch & Dinner', isCheckedMeals: false),
+  // Meals(title: 'Dinner', isCheckedMeals: false),
   Meals(title: 'Veg', isCheckedMeals: false),
   Meals(title: 'NonVeg', isCheckedMeals: false),
 ];
