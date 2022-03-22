@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -1039,14 +1038,15 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
 
   _onDoneLunch(
       {String cuisinetype,
+      String menutype,
       List<Widget> rowsData,
       List<TextEditingController> nameValidation,
       List<TextEditingController> priceValidation,
       List<File> imageValidation}) {
     for (int i = 0; i < rowsData.length; i++) {
       print(i.toString() + "=>");
-      validationAddLunch(
-          i, cuisinetype, nameValidation, priceValidation, imageValidation);
+      validationAddLunch(menutype, i, cuisinetype, nameValidation,
+          priceValidation, imageValidation);
       // addBreakfast(i);
     }
   }
@@ -1086,6 +1086,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
   }
 
   void validationAddLunch(
+      String menutype,
       int index,
       String cuisinetype,
       List<TextEditingController> nameValidation,
@@ -1097,11 +1098,14 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
       Utils.showToast("Please add Lunch price");
     } else if (imageValidation.elementAt(index) == null) {
       Utils.showToast("Please add Lunch image");
+    } else if (menutype == '') {
+      Utils.showToast("Select Menu Type");
     } else {
       addLunch(index, cuisinetype,
           nameValidation: nameValidation,
           priceValidation: priceValidation,
-          imageValidation: imageValidation);
+          imageValidation: imageValidation,
+          menutype: menutype);
     }
   }
 
@@ -1178,7 +1182,8 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
   Future<BeanLunchAdd> addLunch(int index, String cuisineType,
       {List<TextEditingController> nameValidation,
       List<TextEditingController> priceValidation,
-      List<File> imageValidation}) async {
+      List<File> imageValidation,
+      String menutype}) async {
     _progressDialog.show();
     try {
       FormData from = await FormData.fromMap({
@@ -1191,6 +1196,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
         "item_image1": await MultipartFile.fromFile(
             imageValidation.elementAt(index).path,
             filename: imageValidation.elementAt(index).path),
+        "menutype[]": menutype
       });
       BeanLunchAdd bean = await ApiProvider().beanLunchAdd(from);
       _progressDialog.dismiss();

@@ -4,10 +4,10 @@ class EndPoints {
   static const withdraw_payment = 'withdraw_payment.php';
   static const add_account_details = 'add_account_details.php';
   static const add_breakfast_menu = 'add_breakfast_menu.php';
-  static const add_lunch_menu = 'add_lunch_menu.php';
+  static const add_lunch_dinner_menu = 'add_lunch_dinner_menu.php';
   static const add_dinner_menu = 'add_dinner_menu.php';
   static const forgot_password = 'forgot_password.php';
-  static const get_lunch_menu = 'get_lunch_menu.php';
+  static const get_lunch_dinner_menu = 'get_lunch_dinner_menu.php';
   static const get_archive_offer = 'get_archive_offer.php';
   static const get_dashboard_detail = 'get_dashboard_detail.php';
   static const get_live_offer = 'get_live_offer.php';

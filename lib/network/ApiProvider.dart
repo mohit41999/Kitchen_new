@@ -213,7 +213,7 @@ class ApiProvider {
   Future<BeanLunchAdd> beanLunchAdd(FormData params) async {
     try {
       Response response =
-          await _dio.post(EndPoints.add_lunch_menu, data: params);
+          await _dio.post(EndPoints.add_lunch_dinner_menu, data: params);
       return BeanLunchAdd.fromJson(json.decode(response.data));
     } catch (error, stacktrace) {
       print("Exception occurred: $error stackTrace: $stacktrace");
@@ -264,7 +264,7 @@ class ApiProvider {
   Future<BreakfastModel> beanGetLunch(FormData params) async {
     try {
       Response response =
-          await _dio.post(EndPoints.get_lunch_menu, data: params);
+          await _dio.post(EndPoints.get_lunch_dinner_menu, data: params);
       return BreakfastModel.fromJson(json.decode(response.data));
     } catch (error, stacktrace) {
       print("Exception occurred: $error stackTrace: $stacktrace");
