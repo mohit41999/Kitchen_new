@@ -1098,8 +1098,6 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
       Utils.showToast("Please add Lunch price");
     } else if (imageValidation.elementAt(index) == null) {
       Utils.showToast("Please add Lunch image");
-    } else if (menutype == '') {
-      Utils.showToast("Select Menu Type");
     } else {
       addLunch(index, cuisinetype,
           nameValidation: nameValidation,
@@ -1281,6 +1279,10 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
       print(exception);
     }
   }
+
+  String southMealType = '1';
+  String northMealType = '1';
+  String otherMealType = '1';
 
   replaceAddMenu() {
     return Container(
@@ -1467,33 +1469,97 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      _onDoneLunch(
-                          cuisinetype: '0',
-                          rowsData: rowsLunchSouth,
-                          nameValidation: LunchSouthnameTEC,
-                          priceValidation: LunchSouthpriceTEC,
-                          imageValidation: LunchSouthitemImages);
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Center(
-                        child: Padding(
-                            padding: EdgeInsets.all(12),
-                            child: Text(
-                              "Add Lunch",
-                              style: TextStyle(color: Colors.white),
-                            )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '1',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchSouth,
+                              nameValidation: LunchSouthnameTEC,
+                              priceValidation: LunchSouthpriceTEC,
+                              imageValidation: LunchSouthitemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Lunch",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '2',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchSouth,
+                              nameValidation: LunchSouthnameTEC,
+                              priceValidation: LunchSouthpriceTEC,
+                              imageValidation: LunchSouthitemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Dinner",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '3',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchSouth,
+                              nameValidation: LunchSouthnameTEC,
+                              priceValidation: LunchSouthpriceTEC,
+                              imageValidation: LunchSouthitemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Both",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16),
               ],
@@ -1662,33 +1728,97 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      _onDoneLunch(
-                          cuisinetype: '1',
-                          rowsData: rowsLunchNorth,
-                          nameValidation: LunchNorthnameTEC,
-                          priceValidation: LunchNorthpriceTEC,
-                          imageValidation: LunchNorthitemImages);
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Center(
-                        child: Padding(
-                            padding: EdgeInsets.all(12),
-                            child: Text(
-                              "Add Lunch",
-                              style: TextStyle(color: Colors.white),
-                            )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '1',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchNorth,
+                              nameValidation: LunchNorthnameTEC,
+                              priceValidation: LunchNorthpriceTEC,
+                              imageValidation: LunchNorthitemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Lunch",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '2',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchNorth,
+                              nameValidation: LunchNorthnameTEC,
+                              priceValidation: LunchNorthpriceTEC,
+                              imageValidation: LunchNorthitemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Dinner",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '3',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchNorth,
+                              nameValidation: LunchNorthnameTEC,
+                              priceValidation: LunchNorthpriceTEC,
+                              imageValidation: LunchNorthitemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Both",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16),
               ],
@@ -1857,33 +1987,97 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Center(
-                  child: InkWell(
-                    onTap: () {
-                      _onDoneLunch(
-                          cuisinetype: '2',
-                          rowsData: rowsLunchOther,
-                          nameValidation: LunchOthernameTEC,
-                          priceValidation: LunchOtherpriceTEC,
-                          imageValidation: LunchOtheritemImages);
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Center(
-                        child: Padding(
-                            padding: EdgeInsets.all(12),
-                            child: Text(
-                              "Add Lunch",
-                              style: TextStyle(color: Colors.white),
-                            )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '1',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchOther,
+                              nameValidation: LunchOthernameTEC,
+                              priceValidation: LunchOtherpriceTEC,
+                              imageValidation: LunchOtheritemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Lunch",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '2',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchOther,
+                              nameValidation: LunchOthernameTEC,
+                              priceValidation: LunchOtherpriceTEC,
+                              imageValidation: LunchOtheritemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Dinner",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          _onDoneLunch(
+                              menutype: '3',
+                              cuisinetype: '0',
+                              rowsData: rowsLunchOther,
+                              nameValidation: LunchOthernameTEC,
+                              priceValidation: LunchOtherpriceTEC,
+                              imageValidation: LunchOtheritemImages);
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Center(
+                            child: Padding(
+                                padding: EdgeInsets.all(12),
+                                child: Text(
+                                  "Add Both",
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16),
               ],
