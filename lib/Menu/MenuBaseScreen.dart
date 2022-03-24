@@ -184,7 +184,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
 
   Future getAllMenu() async {
     getMenuLunch();
-    getMenuDinner();
+    // getMenuDinner();
     getBreakFastMenu();
   }
 
@@ -974,9 +974,47 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
               width: 250,
               child: Row(
                 children: [
-                  SizedBox(
-                    width: 16,
-                  ),
+                  (list[index].menutype == '1')
+                      ? Container(
+                          margin: EdgeInsets.only(top: 30),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(15),
+                              border: Border.all(color: Color(0xffFFA451))),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              'Lunch',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        )
+                      : (list[index].menutype == '2')
+                          ? Container(
+                              margin: EdgeInsets.only(top: 30),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Color(0xffFFA451))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                  'Dinner',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            )
+                          : Container(
+                              margin: EdgeInsets.only(top: 30),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(color: Color(0xffFFA451))),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                  'Lunch&Dinner',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              ),
+                            ),
                   Expanded(
                       child: Container(
                     margin: EdgeInsets.only(left: 10, top: 30),
@@ -3063,7 +3101,30 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                       style: TextStyle(
                           fontFamily: AppConstant.fontBold,
                           color: Color(0xff7EDABF))),
-                )
+                ),
+                (element.menutype == '1')
+                    ? Padding(
+                        padding: EdgeInsets.only(left: 16),
+                        child: Text(
+                          'Lunch',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      )
+                    : (element.menutype == '2')
+                        ? Padding(
+                            padding: EdgeInsets.only(left: 16),
+                            child: Text(
+                              'Dinner',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          )
+                        : Padding(
+                            padding: EdgeInsets.only(left: 16),
+                            child: Text(
+                              'Lunch & Dinner',
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          )
               ],
             ),
           ),

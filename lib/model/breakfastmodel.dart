@@ -85,12 +85,14 @@ class ListElement {
     this.itemname,
     this.itemprice,
     this.instock,
+    this.menutype,
     this.image,
   });
 
   String menuId;
   String cuisinetype;
   String itemname;
+  String menutype;
   String itemprice;
   String instock;
   String image;
@@ -98,6 +100,7 @@ class ListElement {
   factory ListElement.fromJson(Map<String, dynamic> json) => ListElement(
         menuId: json["menu_id"],
         cuisinetype: json["cuisinetype"],
+        menutype: json["menutype"],
         itemname: json["itemname"],
         itemprice: json["itemprice"],
         instock: json["instock"],
@@ -107,6 +110,7 @@ class ListElement {
   Map<String, dynamic> toJson() => {
         "menu_id": menuId,
         "cuisinetype": cuisinetype,
+        "menutype": menutype,
         "itemname": itemname,
         "itemprice": itemprice,
         "instock": instock,
