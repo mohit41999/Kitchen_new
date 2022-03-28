@@ -575,7 +575,7 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
                           (item.mealfor == '0')
                               ? 'Breakfast'
                               : (item.mealfor == '1')
-                                  ? 'Lunch & Dinner'
+                                  ? 'Lunch'
                                   : 'Dinner',
                           style: TextStyle(fontFamily: AppConstant.fontBold),
                         ),
@@ -965,7 +965,7 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                         child: Text(
-                          "Lunch & Dinner",
+                          "Lunch",
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 14,
@@ -974,33 +974,33 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
                       )),
                 ),
               ),
-              // Expanded(
-              //   child: InkWell(
-              //     onTap: () {
-              //       setState(() {
-              //         isSelectMenu = 2;
-              //       });
-              //     },
-              //     child: Container(
-              //         margin: EdgeInsets.only(left: 16, top: 16, right: 10),
-              //         height: 50,
-              //         width: 110,
-              //         decoration: BoxDecoration(
-              //             color: isSelectMenu == 2
-              //                 ? Color(0xffFEDF7C)
-              //                 : Color(0xffF3F6FA),
-              //             borderRadius: BorderRadius.circular(10)),
-              //         child: Center(
-              //           child: Text(
-              //             "Dinner",
-              //             style: TextStyle(
-              //                 color: Colors.black,
-              //                 fontSize: 14,
-              //                 fontFamily: AppConstant.fontBold),
-              //           ),
-              //         )),
-              //   ),
-              // )
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isSelectMenu = 2;
+                    });
+                  },
+                  child: Container(
+                      margin: EdgeInsets.only(left: 16, top: 16, right: 10),
+                      height: 50,
+                      width: 110,
+                      decoration: BoxDecoration(
+                          color: isSelectMenu == 2
+                              ? Color(0xffFEDF7C)
+                              : Color(0xffF3F6FA),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          "Dinner",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontFamily: AppConstant.fontBold),
+                        ),
+                      )),
+                ),
+              )
             ],
           ),
           SizedBox(

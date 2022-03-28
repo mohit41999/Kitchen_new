@@ -2896,10 +2896,10 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 // Breakfast
                 breakfast == null
                     ? Container(height: 100, width: 200)
-                    : getItem(breakfast),
+                    : getItem(breakfast, true),
                 lunch == null
                     ? Container(height: 100, width: 200)
-                    : getItem(lunch),
+                    : getItem(lunch, false),
 
                 // dinner == null
                 //     ? Container(height: 100, width: 200)
@@ -2912,7 +2912,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
     );
   }
 
-  getItem(BreakfastModelData breakfast) {
+  getItem(BreakfastModelData breakfast, bool isbreakfast) {
     return ListView(
       //crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -2955,7 +2955,8 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   scrollDirection: Axis.vertical,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, ind) {
-                    return getListFood(breakfast.southIndian[index].list[ind]);
+                    return getListFood(
+                        breakfast.southIndian[index].list[ind], isbreakfast);
                   },
                   itemCount: breakfast.southIndian[index].list.length,
                 ),
@@ -3005,7 +3006,8 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   scrollDirection: Axis.vertical,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, ind) {
-                    return getListFood(breakfast.northIndian[index].list[ind]);
+                    return getListFood(
+                        breakfast.northIndian[index].list[ind], isbreakfast);
                   },
                   itemCount: breakfast.northIndian[index].list.length,
                 ),
@@ -3055,7 +3057,8 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   scrollDirection: Axis.vertical,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, ind) {
-                    return getListFood(breakfast.otherIndian[index].list[ind]);
+                    return getListFood(
+                        breakfast.otherIndian[index].list[ind], isbreakfast);
                   },
                   itemCount: breakfast.otherIndian[index].list.length,
                 ),
@@ -3068,7 +3071,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
     );
   }
 
-  getListFood(ListElement element) {
+  getListFood(ListElement element, bool isbreakfast) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -3102,29 +3105,37 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                           fontFamily: AppConstant.fontBold,
                           color: Color(0xff7EDABF))),
                 ),
-                (element.menutype == '1')
+                (isbreakfast)
                     ? Padding(
                         padding: EdgeInsets.only(left: 16),
                         child: Text(
-                          'Lunch',
+                          'Breakfast',
                           style: TextStyle(fontSize: 12),
                         ),
                       )
-                    : (element.menutype == '2')
+                    : (element.menutype == '1')
                         ? Padding(
                             padding: EdgeInsets.only(left: 16),
                             child: Text(
-                              'Dinner',
+                              'Lunch',
                               style: TextStyle(fontSize: 12),
                             ),
                           )
-                        : Padding(
-                            padding: EdgeInsets.only(left: 16),
-                            child: Text(
-                              'Lunch & Dinner',
-                              style: TextStyle(fontSize: 12),
-                            ),
-                          )
+                        : (element.menutype == '2')
+                            ? Padding(
+                                padding: EdgeInsets.only(left: 16),
+                                child: Text(
+                                  'Dinner',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              )
+                            : Padding(
+                                padding: EdgeInsets.only(left: 16),
+                                child: Text(
+                                  'Lunch & Dinner',
+                                  style: TextStyle(fontSize: 12),
+                                ),
+                              )
               ],
             ),
           ),
