@@ -974,7 +974,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
               width: 250,
               child: Row(
                 children: [
-                  (list[index].menutype == '1')
+                  (list[index].menutype == '3')
                       ? Container(
                           margin: EdgeInsets.only(top: 30),
                           decoration: BoxDecoration(
@@ -983,12 +983,12 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Text(
-                              'Lunch',
+                              'Lunch&Dinner',
                               style: TextStyle(fontSize: 12),
                             ),
                           ),
                         )
-                      : (list[index].menutype == '2')
+                      : (list[index].menutype == '1')
                           ? Container(
                               margin: EdgeInsets.only(top: 30),
                               decoration: BoxDecoration(
@@ -997,24 +997,27 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: Text(
-                                  'Dinner',
+                                  'Lunch',
                                   style: TextStyle(fontSize: 12),
                                 ),
                               ),
                             )
-                          : Container(
-                              margin: EdgeInsets.only(top: 30),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15),
-                                  border: Border.all(color: Color(0xffFFA451))),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  'Lunch&Dinner',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                              ),
-                            ),
+                          : (list[index].menutype == '2')
+                              ? Container(
+                                  margin: EdgeInsets.only(top: 30),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                      border:
+                                          Border.all(color: Color(0xffFFA451))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Text(
+                                      'Dinner',
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                  ),
+                                )
+                              : SizedBox(),
                   Expanded(
                       child: Container(
                     margin: EdgeInsets.only(left: 10, top: 30),
@@ -1705,8 +1708,9 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                                           borderRadius:
                                               BorderRadius.circular(8),
                                           child: Image.file(
-                                            LunchNorthitemImages.elementAt(
-                                                index),
+                                            File(LunchNorthitemImages.elementAt(
+                                                    index)
+                                                .path),
                                             width: 55,
                                             height: 55,
                                             fit: BoxFit.cover,
@@ -3106,13 +3110,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                           color: Color(0xff7EDABF))),
                 ),
                 (isbreakfast)
-                    ? Padding(
-                        padding: EdgeInsets.only(left: 16),
-                        child: Text(
-                          'Breakfast',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      )
+                    ? SizedBox()
                     : (element.menutype == '1')
                         ? Padding(
                             padding: EdgeInsets.only(left: 16),
@@ -3445,7 +3443,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                     leading: new Icon(Icons.photo_camera),
                     title: new Text('Camera'),
                     onTap: () {
-                      _imgFromCamera();
+                      _imgFromCamera(index, itemImages);
                       Navigator.of(context).pop();
                     },
                   ),
@@ -3516,20 +3514,21 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
         });
   }
 
-  _imgFromCamera() async {
+  _imgFromCamera(int index, List<File> itemImages) async {
     File image = await ImagePicker.pickImage(
         source: ImageSource.camera, imageQuality: 50);
     setState(() {
       _image = image;
+      itemImages.insert(index, image);
     });
   }
 
   _imgFromGallery(int index, List<File> itemImages) async {
-    print(index.toString() +
-        "bhaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadewe111");
+    print(index.toString() + "");
     File image = await ImagePicker.pickImage(
         source: ImageSource.gallery, imageQuality: 50);
     setState(() {
+      print(image.path);
       itemImages.insert(index, image);
     });
   }
