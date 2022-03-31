@@ -176,7 +176,8 @@ class _AddMealScreenState extends State<AddMealScreen> {
                       SizedBox(
                         height: 5,
                       ),
-                      getItem(bean.data[ind].menuitems, ind),
+                      getItem(bean.data[ind].menuitems, ind,
+                          bean.data[ind].category == 'Bread'),
                       SizedBox(height: 15),
                     ],
                   );
@@ -234,7 +235,7 @@ class _AddMealScreenState extends State<AddMealScreen> {
         ));
   }
 
-  Widget getItem(List<Menuitem> menuitems, int ind) {
+  Widget getItem(List<Menuitem> menuitems, int ind, bool isBread) {
     return ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.vertical,
@@ -288,60 +289,64 @@ class _AddMealScreenState extends State<AddMealScreen> {
                 ),
               ],
             ),
-            (menuitems[index].isChecked)
-                ? Container(
-                    margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Row(
-                      children: [
-                        IconButton(
-                          icon:
-                              Icon(Icons.remove, size: 18, color: Colors.white),
-                          onPressed: () {
-                            setState(() {
-                              menuitems[index].quantity--;
+            (isBread)
+                ? (menuitems[index].isChecked)
+                    ? Container(
+                        margin:
+                            EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                        decoration: BoxDecoration(
+                            color: AppConstant.appColor,
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Row(
+                          children: [
+                            IconButton(
+                              icon: Icon(Icons.remove,
+                                  size: 18, color: Colors.white),
+                              onPressed: () {
+                                setState(() {
+                                  menuitems[index].quantity--;
 
-                              (TempList.forEach((element) {
-                                (element.menuId == menuitems[index].menuId)
-                                    ? element.quantity--
-                                    : null;
-                              }));
-                            });
-                          },
-                        ),
-                        Text(menuitems[index].quantity.toString(),
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)),
-                        IconButton(
-                            icon:
-                                Icon(Icons.add, size: 18, color: Colors.white),
-                            onPressed: () {
-                              setState(() {
-                                menuitems[index].quantity++;
-                                (TempList.forEach((element) {
-                                  (element.menuId == menuitems[index].menuId)
-                                      ? element.quantity++
-                                      : null;
-                                }));
-                              });
-                              // mondayItems[mondayItems
-                              //     .indexWhere((e) => e.menuId == '31')];
+                                  (TempList.forEach((element) {
+                                    (element.menuId == menuitems[index].menuId)
+                                        ? element.quantity--
+                                        : null;
+                                  }));
+                                });
+                              },
+                            ),
+                            Text(menuitems[index].quantity.toString(),
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)),
+                            IconButton(
+                                icon: Icon(Icons.add,
+                                    size: 18, color: Colors.white),
+                                onPressed: () {
+                                  setState(() {
+                                    menuitems[index].quantity++;
+                                    (TempList.forEach((element) {
+                                      (element.menuId ==
+                                              menuitems[index].menuId)
+                                          ? element.quantity++
+                                          : null;
+                                    }));
+                                  });
+                                  // mondayItems[mondayItems
+                                  //     .indexWhere((e) => e.menuId == '31')];
 
-                              // print(mon[0].list.indexOf(mon[0].list[index]));
+                                  // print(mon[0].list.indexOf(mon[0].list[index]));
 
-                              // mondayItems[
-                              //         mon[0].list.indexOf(mon[0].list[index])]
-                              //     .menuId = '2';
-                              // setState(() {
-                              //   menuitems[index].quantity++;
-                              // });
-                            }),
-                      ],
-                    ))
-                : Container(height: 61),
+                                  // mondayItems[
+                                  //         mon[0].list.indexOf(mon[0].list[index])]
+                                  //     .menuId = '2';
+                                  // setState(() {
+                                  //   menuitems[index].quantity++;
+                                  // });
+                                }),
+                          ],
+                        ))
+                    : Container(height: 61)
+                : SizedBox(),
           ],
         );
       },

@@ -1778,7 +1778,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                         onTap: () {
                           _onDoneLunch(
                               menutype: '1',
-                              cuisinetype: '0',
+                              cuisinetype: '1',
                               rowsData: rowsLunchNorth,
                               nameValidation: LunchNorthnameTEC,
                               priceValidation: LunchNorthpriceTEC,
@@ -1807,7 +1807,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                         onTap: () {
                           _onDoneLunch(
                               menutype: '2',
-                              cuisinetype: '0',
+                              cuisinetype: '1',
                               rowsData: rowsLunchNorth,
                               nameValidation: LunchNorthnameTEC,
                               priceValidation: LunchNorthpriceTEC,
@@ -1836,7 +1836,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                         onTap: () {
                           _onDoneLunch(
                               menutype: '3',
-                              cuisinetype: '0',
+                              cuisinetype: '1',
                               rowsData: rowsLunchNorth,
                               nameValidation: LunchNorthnameTEC,
                               priceValidation: LunchNorthpriceTEC,
@@ -2037,7 +2037,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                         onTap: () {
                           _onDoneLunch(
                               menutype: '1',
-                              cuisinetype: '0',
+                              cuisinetype: '2',
                               rowsData: rowsLunchOther,
                               nameValidation: LunchOthernameTEC,
                               priceValidation: LunchOtherpriceTEC,
@@ -2066,7 +2066,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                         onTap: () {
                           _onDoneLunch(
                               menutype: '2',
-                              cuisinetype: '0',
+                              cuisinetype: '2',
                               rowsData: rowsLunchOther,
                               nameValidation: LunchOthernameTEC,
                               priceValidation: LunchOtherpriceTEC,
@@ -2095,7 +2095,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                         onTap: () {
                           _onDoneLunch(
                               menutype: '3',
-                              cuisinetype: '0',
+                              cuisinetype: '2',
                               rowsData: rowsLunchOther,
                               nameValidation: LunchOthernameTEC,
                               priceValidation: LunchOtherpriceTEC,
