@@ -6,9 +6,6 @@ import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
 import 'package:kitchen/model/BeanLogin.dart';
 import 'package:kitchen/model/BeanSignUp.dart' as bean;
 import 'package:kitchen/model/GetActiveOrder.dart';
-import 'package:kitchen/model/GetActiveOrder.dart';
-import 'package:kitchen/model/GetActiveOrder.dart';
-import 'package:kitchen/model/GetActiveOrder.dart';
 import 'package:kitchen/model/ReadyToPickupOrder.dart';
 
 import 'package:kitchen/network/ApiProvider.dart';
@@ -260,12 +257,16 @@ class _ActiveScreenState extends State<ActiveScreen> {
               // ),
               GestureDetector(
                 onTap: () {
-                  bottomsheetStatus(context, data.orderItemsId);
+                  (data.status == 'Ready to pick')
+                      ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Order is ready to pick'),
+                        ))
+                      : bottomsheetStatus(context, data.orderItemsId);
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: Container(
-                    width: 200,
+                    width: (data.status == 'Ready to pick') ? 150 : 200,
                     height: 42,
                     decoration: BoxDecoration(
                         color: Colors.black,
@@ -280,7 +281,10 @@ class _ActiveScreenState extends State<ActiveScreen> {
                               fontSize: 13,
                               fontFamily: AppConstant.fontBold),
                         ),
-                        Icon(Icons.keyboard_arrow_down, color: Colors.white),
+                        (data.status == 'Ready to pick')
+                            ? Container()
+                            : Icon(Icons.keyboard_arrow_down,
+                                color: Colors.white),
                       ],
                     ),
                   ),
@@ -334,12 +338,11 @@ class _ActiveScreenState extends State<ActiveScreen> {
       });
 
       ReadyToPickupOrder bean = await ApiProvider().readyToPickupOrder(from);
-      print(bean.data);
 
+      progressDialog.dismiss();
       if (bean.status == true) {
-        data = bean.data;
-        progressDialog.dismiss();
         getActiveOrder(context);
+        Navigator.pop(context);
 
         return bean;
       } else {
@@ -360,7 +363,7 @@ class _ActiveScreenState extends State<ActiveScreen> {
     print(currentDate);
   }
 
-  void bottomsheetStatus(BuildContext context, String orderItemsId) {
+  Future bottomsheetStatus(BuildContext context, String orderItemsId) {
     showModalBottomSheet(
         shape: RoundedRectangleBorder(
           // <-- for border radius
@@ -405,8 +408,7 @@ class _ActiveScreenState extends State<ActiveScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      readyToPickUpOrder(context, orderItemsId)
-                          .then((value) => Navigator.pop(context));
+                      readyToPickUpOrder(context, orderItemsId);
                       // setState(() {
                       //   //Navigator.pop(context);
                       //  // status = "Pending";
@@ -476,6 +478,10 @@ class _ActiveScreenState extends State<ActiveScreen> {
               ),
             );
           });
-        });
+        }).then((value) {
+      setState(() {
+        getActiveOrder(context);
+      });
+    });
   }
 }

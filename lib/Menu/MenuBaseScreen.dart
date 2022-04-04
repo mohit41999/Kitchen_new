@@ -39,6 +39,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
     'North Indian Meals',
     'Other Indian Meals'
   ];
+  List cuisinetype = ['Lunch', 'Dinner', 'Both'];
   ProgressDialog _progressDialog;
   var isSelected = 1;
 
@@ -59,6 +60,9 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
   File _imageLunch;
   String isSelectVeg = 'Veg';
   String SelectLunchCategory = 'Veg';
+  String SelectSouthCuisineType = 'Lunch';
+  String SelectNorthCuisineType = 'Lunch';
+  String SelectOtherCuisineType = 'Lunch';
   String SelectDinnerCategory = 'Veg';
   int LunchIndex = 0;
   int DinnerIndex = 0;
@@ -1413,6 +1417,46 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
+                Divider(),
+                Container(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: cuisinetype.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          setState(() {
+                            SelectSouthCuisineType = cuisinetype[index];
+                          });
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          margin: EdgeInsets.only(left: 16),
+                          decoration: BoxDecoration(
+                              color:
+                                  SelectSouthCuisineType == cuisinetype[index]
+                                      ? Color(0xffFFA451)
+                                      : Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              cuisinetype[index],
+                              style: TextStyle(
+                                  color: SelectSouthCuisineType ==
+                                          cuisinetype[index]
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: AppConstant.fontBold),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
                 (SelectLunchCategory == lunch.southIndian[LunchIndex].category)
                     ? CategoryMenuItems(
                         list: lunch.southIndian[LunchIndex].list)
@@ -1510,97 +1554,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '1',
-                              cuisinetype: '0',
-                              rowsData: rowsLunchSouth,
-                              nameValidation: LunchSouthnameTEC,
-                              priceValidation: LunchSouthpriceTEC,
-                              imageValidation: LunchSouthitemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Lunch",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      _onDoneLunch(
+                          menutype: (SelectSouthCuisineType) == 'Lunch'
+                              ? '1'
+                              : (SelectSouthCuisineType) == 'Dinner'
+                                  ? '2'
+                                  : '3',
+                          cuisinetype: '0',
+                          rowsData: rowsLunchSouth,
+                          nameValidation: LunchSouthnameTEC,
+                          priceValidation: LunchSouthpriceTEC,
+                          imageValidation: LunchSouthitemImages);
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 110,
+                      decoration: BoxDecoration(
+                        color: AppConstant.appColor,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Center(
+                        child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Text(
+                              "Save Menu",
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ),
                     ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '2',
-                              cuisinetype: '0',
-                              rowsData: rowsLunchSouth,
-                              nameValidation: LunchSouthnameTEC,
-                              priceValidation: LunchSouthpriceTEC,
-                              imageValidation: LunchSouthitemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Dinner",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '3',
-                              cuisinetype: '0',
-                              rowsData: rowsLunchSouth,
-                              nameValidation: LunchSouthnameTEC,
-                              priceValidation: LunchSouthpriceTEC,
-                              imageValidation: LunchSouthitemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Both",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 16),
               ],
@@ -1660,6 +1645,46 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                               style: TextStyle(
                                   color: SelectLunchCategory ==
                                           lunch.northIndian[index].category
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: AppConstant.fontBold),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+                Divider(),
+                Container(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: cuisinetype.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          setState(() {
+                            SelectNorthCuisineType = cuisinetype[index];
+                          });
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          margin: EdgeInsets.only(left: 16),
+                          decoration: BoxDecoration(
+                              color:
+                                  SelectNorthCuisineType == cuisinetype[index]
+                                      ? Color(0xffFFA451)
+                                      : Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              cuisinetype[index],
+                              style: TextStyle(
+                                  color: SelectNorthCuisineType ==
+                                          cuisinetype[index]
                                       ? Colors.white
                                       : Colors.black,
                                   fontSize: 14,
@@ -1770,97 +1795,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '1',
-                              cuisinetype: '1',
-                              rowsData: rowsLunchNorth,
-                              nameValidation: LunchNorthnameTEC,
-                              priceValidation: LunchNorthpriceTEC,
-                              imageValidation: LunchNorthitemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Lunch",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      _onDoneLunch(
+                          menutype: (SelectNorthCuisineType) == 'Lunch'
+                              ? '1'
+                              : (SelectNorthCuisineType) == 'Dinner'
+                                  ? '2'
+                                  : '3',
+                          cuisinetype: '1',
+                          rowsData: rowsLunchNorth,
+                          nameValidation: LunchNorthnameTEC,
+                          priceValidation: LunchNorthpriceTEC,
+                          imageValidation: LunchNorthitemImages);
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 110,
+                      decoration: BoxDecoration(
+                        color: AppConstant.appColor,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Center(
+                        child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Text(
+                              "Save Menu",
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ),
                     ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '2',
-                              cuisinetype: '1',
-                              rowsData: rowsLunchNorth,
-                              nameValidation: LunchNorthnameTEC,
-                              priceValidation: LunchNorthpriceTEC,
-                              imageValidation: LunchNorthitemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Dinner",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '3',
-                              cuisinetype: '1',
-                              rowsData: rowsLunchNorth,
-                              nameValidation: LunchNorthnameTEC,
-                              priceValidation: LunchNorthpriceTEC,
-                              imageValidation: LunchNorthitemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Both",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 16),
               ],
@@ -1920,6 +1886,46 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                               style: TextStyle(
                                   color: SelectLunchCategory ==
                                           lunch.otherIndian[index].category
+                                      ? Colors.white
+                                      : Colors.black,
+                                  fontSize: 14,
+                                  fontFamily: AppConstant.fontBold),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    scrollDirection: Axis.horizontal,
+                  ),
+                ),
+                Divider(),
+                Container(
+                  height: 40,
+                  child: ListView.builder(
+                    itemCount: cuisinetype.length,
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          setState(() {
+                            SelectOtherCuisineType = cuisinetype[index];
+                          });
+                        },
+                        child: Container(
+                          height: 40,
+                          width: 110,
+                          margin: EdgeInsets.only(left: 16),
+                          decoration: BoxDecoration(
+                              color:
+                                  SelectOtherCuisineType == cuisinetype[index]
+                                      ? Color(0xffFFA451)
+                                      : Colors.grey.shade200,
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Center(
+                            child: Text(
+                              cuisinetype[index],
+                              style: TextStyle(
+                                  color: SelectOtherCuisineType ==
+                                          cuisinetype[index]
                                       ? Colors.white
                                       : Colors.black,
                                   fontSize: 14,
@@ -2029,97 +2035,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                   ),
                 ),
                 SizedBox(height: 10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '1',
-                              cuisinetype: '2',
-                              rowsData: rowsLunchOther,
-                              nameValidation: LunchOthernameTEC,
-                              priceValidation: LunchOtherpriceTEC,
-                              imageValidation: LunchOtheritemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Lunch",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
+                Center(
+                  child: InkWell(
+                    onTap: () {
+                      _onDoneLunch(
+                          menutype: (SelectOtherCuisineType) == 'Lunch'
+                              ? '1'
+                              : (SelectOtherCuisineType) == 'Dinner'
+                                  ? '2'
+                                  : '3',
+                          cuisinetype: '2',
+                          rowsData: rowsLunchOther,
+                          nameValidation: LunchOthernameTEC,
+                          priceValidation: LunchOtherpriceTEC,
+                          imageValidation: LunchOtheritemImages);
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 110,
+                      decoration: BoxDecoration(
+                        color: AppConstant.appColor,
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Center(
+                        child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Text(
+                              "Save Menu",
+                              style: TextStyle(color: Colors.white),
+                            )),
                       ),
                     ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '2',
-                              cuisinetype: '2',
-                              rowsData: rowsLunchOther,
-                              nameValidation: LunchOthernameTEC,
-                              priceValidation: LunchOtherpriceTEC,
-                              imageValidation: LunchOtheritemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Dinner",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Center(
-                      child: InkWell(
-                        onTap: () {
-                          _onDoneLunch(
-                              menutype: '3',
-                              cuisinetype: '2',
-                              rowsData: rowsLunchOther,
-                              nameValidation: LunchOthernameTEC,
-                              priceValidation: LunchOtherpriceTEC,
-                              imageValidation: LunchOtheritemImages);
-                        },
-                        child: Container(
-                          height: 40,
-                          width: 110,
-                          decoration: BoxDecoration(
-                            color: AppConstant.appColor,
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                          child: Center(
-                            child: Padding(
-                                padding: EdgeInsets.all(12),
-                                child: Text(
-                                  "Add Both",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
                 SizedBox(height: 16),
               ],
