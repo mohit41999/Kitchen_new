@@ -90,20 +90,24 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
     progressDialog = ProgressDialog(context);
     return Scaffold(
       body: getPaged(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: (isReplaceDefault == true)
-          ? FloatingActionButton(
-              backgroundColor: AppConstant.appColor,
-              onPressed: () {
-                setState(() {
-                  isReplaceDefault = false;
-                  isReplaceAddPackages = true;
+          ? Padding(
+              padding: const EdgeInsets.only(right: 8.0, bottom: 65),
+              child: FloatingActionButton(
+                backgroundColor: AppConstant.appColor,
+                onPressed: () {
+                  setState(() {
+                    isReplaceDefault = false;
+                    isReplaceAddPackages = true;
 
-                  isReplaceMenu = false;
+                    isReplaceMenu = false;
 
-                  isCreatePackages = false;
-                });
-              },
-              child: Icon(Icons.add),
+                    isCreatePackages = false;
+                  });
+                },
+                child: Icon(Icons.add),
+              ),
             )
           : Container(),
     );
@@ -235,6 +239,7 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
               ),
             ),
           ),
+          AppConstant().navBarHt()
         ],
       ),
       physics: BouncingScrollPhysics(),
@@ -344,7 +349,8 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
                     ),
                   )
                 ],
-              )
+              ),
+              AppConstant().navBarHt()
             ],
           ),
           physics: BouncingScrollPhysics(),
@@ -673,13 +679,21 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
         ? Container()
         : (getPackagesbean.status == false)
             ? addDafultIcon()
-            : ListView.builder(
-                shrinkWrap: true,
-                itemCount: getPackagesbean.data.length,
+            : SingleChildScrollView(
                 physics: BouncingScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                  return getItems(getPackagesbean.data[index]);
-                },
+                child: Column(
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: getPackagesbean.data.length,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (BuildContext context, int index) {
+                        return getItems(getPackagesbean.data[index]);
+                      },
+                    ),
+                    AppConstant().navBarHt()
+                  ],
+                ),
               );
   }
 
@@ -1218,6 +1232,7 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
               ),
             ),
           ),
+          AppConstant().navBarHt()
         ],
       ),
     );
@@ -1451,6 +1466,7 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
                   ),
                 )),
           ),
+          AppConstant().navBarHt()
         ],
       ),
     );

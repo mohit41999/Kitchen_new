@@ -1,21 +1,23 @@
+import 'dart:ui';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kitchen/Menu/MenuBaseScreen.dart';
 import 'package:kitchen/Menu/MenuDetailScreen.dart';
 import 'package:kitchen/Order/OrderScreen.dart';
 import 'package:kitchen/model/BeanLogin.dart';
-import 'package:kitchen/model/BeanSignUp.dart';
 import 'package:kitchen/payment/PaymentScreen.dart';
 import 'package:kitchen/res.dart';
 import 'package:kitchen/screen/AccountScreen.dart';
 import 'package:kitchen/screen/CutomerChatScreen.dart';
 import 'package:kitchen/screen/DashboardScreen.dart';
 import 'package:kitchen/screen/FeedbackScreen.dart';
-import 'package:kitchen/screen/MenuScreen.dart';
 import 'package:kitchen/screen/OfferManagementScreen.dart';
 import 'package:kitchen/screen/TrackDeliveryScreen.dart';
 import 'package:kitchen/utils/Constents.dart';
 import 'package:kitchen/utils/PrefManager.dart';
 import 'package:kitchen/utils/Utils.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeBaseScreen extends StatefulWidget {
@@ -38,77 +40,105 @@ class HomeBaseScreenState extends State<HomeBaseScreen> {
     });
   }
 
+  PersistentTabController _controller =
+      PersistentTabController(initialIndex: 0);
+  Future<bool> setpage(BuildContext) async {
+    if (_controller.index == 0) {
+      return true;
+    } else {
+      setState(() {
+        _controller.index = 0;
+      });
+      return false;
+    }
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        opacity: 0.8,
+        icon: ImageIcon(
+          AssetImage('assets/images/ic_dashboard.png'),
+        ),
+        title: ("Dashboard"),
+        activeColorPrimary: AppConstant.appColor,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        opacity: 0.8,
+        icon: ImageIcon(
+          AssetImage(
+            'assets/images/ic_menu_bottom.png',
+          ),
+        ),
+        title: ("Menu"),
+        activeColorPrimary: AppConstant.appColor,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        opacity: 0.8,
+        icon: ImageIcon(
+          AssetImage('assets/images/ic_order.png'),
+        ),
+        title: ("Orders"),
+        activeColorPrimary: AppConstant.appColor,
+        inactiveColorPrimary: Colors.white,
+      ),
+      PersistentBottomNavBarItem(
+        iconSize: 40,
+        icon: ImageIcon(
+          AssetImage('assets/images/ic_account.png'),
+        ),
+        opacity: 0.8,
+        title: ("Account"),
+        activeColorPrimary: AppConstant.appColor,
+        inactiveColorPrimary: Colors.white,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: MyDrawers(),
-        body: Center(
-          child: _children.elementAt(_selectedIndex),
+      body: PersistentTabView(
+        context,
+
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        controller: _controller,
+        screens: _children,
+
+        items: _navBarsItems(),
+        confineInSafeArea: true,
+        navBarHeight: 65,
+        backgroundColor: Colors.black, // Default is Colors.white.
+        handleAndroidBackButtonPress: true, // Default is true.
+        resizeToAvoidBottomInset:
+            true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+        stateManagement: true, // Default is true.
+        hideNavigationBarWhenKeyboardShows:
+            true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+        decoration: NavBarDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            colorBehindNavBar: Colors.grey.shade200),
+        popAllScreensOnTapOfSelectedTab: true,
+        popActionScreens: PopActionScreensType.all,
+        itemAnimationProperties: ItemAnimationProperties(
+          // Navigation Bar's items animation properties.
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
         ),
-        bottomNavigationBar: Stack(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30.0),
-                topRight: Radius.circular(30.0),
-              ),
-              child: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                showUnselectedLabels: true,
-                backgroundColor: Colors.black,
-                showSelectedLabels: true,
-                unselectedItemColor: Colors.white,
-                items: const <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(
-                      AssetImage('assets/images/ic_dashboard.png'),
-                    ),
-                    title: Text(
-                      'dashboard',
-                      style: TextStyle(
-                        fontFamily: AppConstant.fontRegular,
-                        fontSize: 12,
-                      ),
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(
-                      AssetImage(
-                        'assets/images/ic_menu_bottom.png',
-                      ),
-                    ),
-                    title: Text('Menu',
-                        style: TextStyle(
-                            fontFamily: AppConstant.fontRegular, fontSize: 12)),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(
-                      AssetImage('assets/images/ic_order.png'),
-                    ),
-                    title: Text(
-                      'Orders',
-                      style: TextStyle(
-                          fontFamily: AppConstant.fontRegular, fontSize: 12),
-                    ),
-                  ),
-                  BottomNavigationBarItem(
-                    icon: ImageIcon(
-                      AssetImage('assets/images/ic_account.png'),
-                    ),
-                    title: Text(
-                      'Account',
-                      style: TextStyle(
-                          fontFamily: AppConstant.fontRegular, fontSize: 12),
-                    ),
-                  ),
-                ],
-                currentIndex: _selectedIndex,
-                selectedItemColor: Color(0xffFFA451),
-                onTap: _onItemTapped,
-              ),
-            )
-          ],
-        ));
+        screenTransitionAnimation: ScreenTransitionAnimation(
+          // Screen transition animation on change of selected tab.
+          animateTabTransition: true,
+          curve: Curves.ease,
+          duration: Duration(milliseconds: 200),
+        ),
+        navBarStyle: NavBarStyle.style3,
+        onWillPop: setpage,
+        // Choose the nav bar style with this property.
+      ),
+    );
   }
 }
 

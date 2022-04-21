@@ -124,6 +124,10 @@ class _TrackDeliveryScreenState extends State<TrackDeliveryScreen> {
                           ),
               ),
             ),
+            Container(
+              height: 65,
+              color: Colors.white,
+            )
           ],
         ));
   }

@@ -454,35 +454,39 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
 
           SizedBox(height: 26),
           SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      rowsBreakfastSouth.add(createRow(
-                          name: BreakfastSouthnameTEC,
-                          price: BreakfastSouthpriceTEC,
-                          itemImages: BreakfastSouthitemImages));
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                rowsBreakfastSouth.add(createRow(
+                    name: BreakfastSouthnameTEC,
+                    price: BreakfastSouthpriceTEC,
+                    itemImages: BreakfastSouthitemImages));
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.transparent,
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppConstant.appColor,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
+                    SizedBox(width: 20),
+                    Text('Add another menu'),
+                  ],
                 ),
-                SizedBox(width: 20),
-                Text('Add another menu'),
-              ],
+              ),
             ),
           ),
           SizedBox(height: 10),
@@ -667,35 +671,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
 
           SizedBox(height: 26),
           SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      rowsBreakfastNorth.add(createRow(
-                          name: BreakfastNorthnameTEC,
-                          price: BreakfastNorthpriceTEC,
-                          itemImages: BreakfastNorthitemImages));
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                rowsBreakfastNorth.add(createRow(
+                    name: BreakfastNorthnameTEC,
+                    price: BreakfastNorthpriceTEC,
+                    itemImages: BreakfastNorthitemImages));
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppConstant.appColor,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
+                    SizedBox(width: 20),
+                    Text('Add another menu'),
+                  ],
                 ),
-                SizedBox(width: 20),
-                Text('Add another menu'),
-              ],
+              ),
             ),
           ),
           SizedBox(height: 10),
@@ -882,35 +889,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
 
           SizedBox(height: 26),
           SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      rowsBreakfastOther.add(createRow(
-                          name: BreakfastOthernameTEC,
-                          price: BreakfastOtherpriceTEC,
-                          itemImages: BreakfastOtheritemImages));
-                    });
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: AppConstant.appColor,
-                        borderRadius: BorderRadius.circular(12)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.add,
-                        color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                rowsBreakfastOther.add(createRow(
+                    name: BreakfastOthernameTEC,
+                    price: BreakfastOtherpriceTEC,
+                    itemImages: BreakfastOtheritemImages));
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: AppConstant.appColor,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
+                    SizedBox(width: 20),
+                    Text('Add another menu'),
+                  ],
                 ),
-                SizedBox(width: 20),
-                Text('Add another menu'),
-              ],
+              ),
             ),
           ),
           SizedBox(height: 10),
@@ -1379,7 +1389,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 Container(
                   height: 40,
                   child: ListView.builder(
-                    itemCount: lunch.southIndian.length,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
@@ -1522,35 +1532,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 ),
                 SizedBox(height: 26),
                 SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            rowsLunchSouth.add(createRow(
-                                name: LunchSouthnameTEC,
-                                price: LunchSouthpriceTEC,
-                                itemImages: LunchSouthitemImages));
-                          });
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppConstant.appColor,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.add,
-                              color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      rowsLunchSouth.add(createRow(
+                          name: LunchSouthnameTEC,
+                          price: LunchSouthpriceTEC,
+                          itemImages: LunchSouthitemImages));
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: AppConstant.appColor,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
+                          SizedBox(width: 20),
+                          Text('Add another menu'),
+                        ],
                       ),
-                      SizedBox(width: 20),
-                      Text('Add another menu'),
-                    ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -1619,7 +1632,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 Container(
                   height: 40,
                   child: ListView.builder(
-                    itemCount: lunch.northIndian.length,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
@@ -1763,35 +1776,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 ),
                 SizedBox(height: 26),
                 SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            rowsLunchNorth.add(createRow(
-                                name: LunchNorthnameTEC,
-                                price: LunchNorthpriceTEC,
-                                itemImages: LunchNorthitemImages));
-                          });
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppConstant.appColor,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.add,
-                              color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      rowsLunchNorth.add(createRow(
+                          name: LunchNorthnameTEC,
+                          price: LunchNorthpriceTEC,
+                          itemImages: LunchNorthitemImages));
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: AppConstant.appColor,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
+                          SizedBox(width: 20),
+                          Text('Add another menu'),
+                        ],
                       ),
-                      SizedBox(width: 20),
-                      Text('Add another menu'),
-                    ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -1860,7 +1876,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 Container(
                   height: 40,
                   child: ListView.builder(
-                    itemCount: lunch.otherIndian.length,
+                    itemCount: 2,
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {
@@ -2003,35 +2019,38 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                 ),
                 SizedBox(height: 26),
                 SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            rowsLunchOther.add(createRow(
-                                name: LunchOthernameTEC,
-                                price: LunchOtherpriceTEC,
-                                itemImages: LunchOtheritemImages));
-                          });
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: AppConstant.appColor,
-                              borderRadius: BorderRadius.circular(12)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Icon(
-                              Icons.add,
-                              color: Colors.white,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      rowsLunchOther.add(createRow(
+                          name: LunchOthernameTEC,
+                          price: LunchOtherpriceTEC,
+                          itemImages: LunchOtheritemImages));
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      color: Colors.transparent,
+                      child: Row(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: AppConstant.appColor,
+                                borderRadius: BorderRadius.circular(12)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
-                        ),
+                          SizedBox(width: 20),
+                          Text('Add another menu'),
+                        ],
                       ),
-                      SizedBox(width: 20),
-                      Text('Add another menu'),
-                    ],
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -2701,6 +2720,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
                     ),
                   )),
             ),
+            AppConstant().navBarHt()
           ],
         ),
       ),
@@ -2859,6 +2879,7 @@ class _MenuBaseScreenState extends State<MenuBaseScreen>
             ),
           ),
         ),
+        AppConstant().navBarHt()
       ],
     );
   }

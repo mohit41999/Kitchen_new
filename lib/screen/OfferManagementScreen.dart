@@ -192,9 +192,9 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
                             scrollDirection: Axis.vertical,
                             physics: BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return getLiveOffer(result[index]);
+                              return getLiveOffer(result[0]);
                             },
-                            itemCount: result.length,
+                            itemCount: 10,
                           );
                         }
                       }
@@ -214,7 +214,7 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
                 child: Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
-                        padding: EdgeInsets.only(right: 16, bottom: 16),
+                        padding: EdgeInsets.only(right: 16, bottom: 0),
                         child: InkWell(
                           onTap: () {
                             addliveOffer();
@@ -228,6 +228,7 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
               )
             ],
           )),
+          AppConstant().navBarHt()
         ],
       );
     } else {
@@ -287,6 +288,7 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
               // )
             ],
           )),
+          AppConstant().navBarHt()
         ],
       );
     }

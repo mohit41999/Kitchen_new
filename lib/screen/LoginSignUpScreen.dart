@@ -92,6 +92,9 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
     }
   }
 
+  Widget commonSizedBoc() => SizedBox(
+        height: 10,
+      );
   _uploadimgFromGallery() async {
     var permission = await Permission.storage.request();
     if (permission.isGranted) {
@@ -310,7 +313,6 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Container(
-                            height: 1100,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -342,6 +344,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextField(
                                   controller: Kitchen_Address,
                                   keyboardType: TextInputType.text,
@@ -355,52 +358,61 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
-                                DropdownButton(
-                                  isExpanded: true,
-                                  items: state.map((item) {
-                                    return DropdownMenuItem(
-                                      child: Text(item['name']),
-                                      value: item['state_id'].toString(),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String newVal) {
-                                    setState(() {
-                                      city = [];
-                                      state_id = newVal;
-                                      print(newVal);
-                                      ApiProvider()
-                                          .getCity(FormData.fromMap({
-                                        'token': '123456789',
-                                        'state_id': state_id
-                                      }))
-                                          .then((value) {
-                                        setState(() {
-                                          city = value['data'];
-                                          city_id = null;
+                                commonSizedBoc(),
+                                Container(
+                                  height: 50,
+                                  child: DropdownButton(
+                                    isExpanded: true,
+                                    items: state.map((item) {
+                                      return DropdownMenuItem(
+                                        child: Text(item['name']),
+                                        value: item['state_id'].toString(),
+                                      );
+                                    }).toList(),
+                                    onChanged: (String newVal) {
+                                      setState(() {
+                                        city = [];
+                                        state_id = newVal;
+                                        print(newVal);
+                                        ApiProvider()
+                                            .getCity(FormData.fromMap({
+                                          'token': '123456789',
+                                          'state_id': state_id
+                                        }))
+                                            .then((value) {
+                                          setState(() {
+                                            city = value['data'];
+                                            city_id = null;
+                                          });
                                         });
                                       });
-                                    });
-                                  },
-                                  value: state_id,
-                                  hint: Text('Select State'),
+                                    },
+                                    value: state_id,
+                                    hint: Text('Select State'),
+                                  ),
                                 ),
-                                DropdownButton(
-                                  isExpanded: true,
-                                  items: city.map((item) {
-                                    return DropdownMenuItem(
-                                      child: Text(item['name']),
-                                      value: item['city_id'].toString(),
-                                    );
-                                  }).toList(),
-                                  onChanged: (String newVal) {
-                                    setState(() {
-                                      city_id = newVal;
-                                      print(newVal);
-                                    });
-                                  },
-                                  value: city_id,
-                                  hint: Text('Select City'),
+                                commonSizedBoc(),
+                                Container(
+                                  height: 50,
+                                  child: DropdownButton(
+                                    isExpanded: true,
+                                    items: city.map((item) {
+                                      return DropdownMenuItem(
+                                        child: Text(item['name']),
+                                        value: item['city_id'].toString(),
+                                      );
+                                    }).toList(),
+                                    onChanged: (String newVal) {
+                                      setState(() {
+                                        city_id = newVal;
+                                        print(newVal);
+                                      });
+                                    },
+                                    value: city_id,
+                                    hint: Text('Select City'),
+                                  ),
                                 ),
+                                commonSizedBoc(),
                                 TextField(
                                   controller: Pincode,
                                   keyboardType: TextInputType.text,
@@ -414,6 +426,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextField(
                                   controller: ContactPersonName,
                                   keyboardType: TextInputType.text,
@@ -427,6 +440,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextField(
                                   controller: ContactPersonRole,
                                   keyboardType: TextInputType.text,
@@ -440,6 +454,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextField(
                                   controller: MobileNumber,
                                   keyboardType: TextInputType.number,
@@ -453,6 +468,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextField(
                                   controller: KitchenContactNo,
                                   keyboardType: TextInputType.number,
@@ -466,7 +482,8 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 15),
+                                commonSizedBoc(),
+                                SizedBox(height: 5),
                                 Text(
                                   "Enter you business details here",
                                   style: TextStyle(
@@ -474,6 +491,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                       color: Colors.black,
                                       fontFamily: AppConstant.fontBold),
                                 ),
+                                commonSizedBoc(),
                                 TextFormField(
                                   controller: FSSAILicenseNo,
                                   keyboardType: TextInputType.number,
@@ -487,6 +505,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextFormField(
                                   controller: dateCtl,
                                   keyboardType: TextInputType.text,
@@ -520,6 +539,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextFormField(
                                   controller: Email,
                                   decoration: InputDecoration(
@@ -532,6 +552,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextFormField(
                                   controller: PanCard,
                                   decoration: InputDecoration(
@@ -544,6 +565,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 TextFormField(
                                   controller: GstRegister,
                                   decoration: InputDecoration(
@@ -556,6 +578,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ),
                                 ),
+                                commonSizedBoc(),
                                 Row(
                                   children: [
                                     Padding(
@@ -622,6 +645,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ],
                                 ),
+                                commonSizedBoc(),
                                 Row(
                                   children: [
                                     Padding(
@@ -688,6 +712,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     ),
                                   ],
                                 ),
+                                commonSizedBoc(),
                                 Text(
                                   "(you can upload  your menu in PNG,JPEG or PDF Format)",
                                   style: TextStyle(
@@ -695,6 +720,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                       fontFamily: AppConstant.fontRegular,
                                       fontSize: 12),
                                 ),
+                                commonSizedBoc(),
                               ],
                             ),
                           ),
@@ -785,7 +811,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 padding: EdgeInsets.only(
                                     left: 16, top: 20, right: 16),
                                 child: Text(
-                                  "Details verified",
+                                  "User Under Verification",
                                   style: TextStyle(
                                       decoration: TextDecoration.none,
                                       color: Colors.black,
