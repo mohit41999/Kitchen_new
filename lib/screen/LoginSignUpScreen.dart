@@ -111,6 +111,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
   @override
   void initState() {
     super.initState();
+
     ApiProvider().getState(from).then((value) {
       setState(() {
         print(value);
@@ -186,7 +187,6 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                   SingleChildScrollView(
                       physics: BouncingScrollPhysics(),
                       child: Container(
-                        height: MediaQuery.of(context).size.height * 0.63,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -221,18 +221,22 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                       controller: kitchenId,
                                       decoration: InputDecoration(
                                         labelText: "Enter Kitchen ID",
+                                        labelStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
                                         fillColor: Colors.grey,
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
                                               color: Colors.grey, width: 2.0),
                                           borderRadius:
-                                              BorderRadius.circular(25.0),
+                                              BorderRadius.circular(10.0),
                                         ),
                                       ),
                                     ),
                                     // SizedBox(
                                     //   height: 30,
                                     // ),
+                                    commonSizedBoc(),
                                     TextField(
                                       controller: password,
                                       keyboardType:
@@ -240,12 +244,15 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                       obscureText: true,
                                       decoration: InputDecoration(
                                         labelText: "Password",
+                                        labelStyle: TextStyle(
+                                          color: Colors.grey,
+                                        ),
                                         fillColor: Colors.grey,
                                         focusedBorder: OutlineInputBorder(
                                           borderSide: const BorderSide(
                                               color: Colors.grey, width: 2.0),
                                           borderRadius:
-                                              BorderRadius.circular(25.0),
+                                              BorderRadius.circular(10.0),
                                         ),
                                       ),
                                     ),
@@ -253,6 +260,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 ),
                               ),
                             ),
+                            commonSizedBoc(),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -337,10 +345,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "Kitchen Name",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -350,11 +359,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     labelText: "Kitchen Address",
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     fillColor: Colors.grey,
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -418,11 +428,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     labelText: "Pincode",
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     fillColor: Colors.grey,
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -432,11 +443,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   keyboardType: TextInputType.text,
                                   decoration: InputDecoration(
                                     labelText: "Contact Person Name",
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     fillColor: Colors.grey,
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -447,10 +459,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "Contact Person Role",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -461,10 +474,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "Mobile Number",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -475,10 +489,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "Kitchen Contact Number",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -498,10 +513,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "FSSAI Licence Number",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -532,10 +548,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "Expiry Date Date",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -544,11 +561,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   controller: Email,
                                   decoration: InputDecoration(
                                     labelText: "Email",
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     fillColor: Colors.grey,
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -558,10 +576,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   decoration: InputDecoration(
                                     labelText: "Pan Card",
                                     fillColor: Colors.grey,
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -570,11 +589,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                   controller: GstRegister,
                                   decoration: InputDecoration(
                                     labelText: "Gst Registration",
+                                    labelStyle: TextStyle(color: Colors.grey),
                                     fillColor: Colors.grey,
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: const BorderSide(
                                           color: Colors.grey, width: 2.0),
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(10.0),
                                     ),
                                   ),
                                 ),
@@ -912,8 +932,20 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
       Utils.showToast("Enter Kitchen Name");
     } else if (kitchenAddress.isEmpty) {
       Utils.showToast("Enter Kitchen Address");
+    } else if (state_id == null) {
+      Utils.showToast("Select state");
+    } else if (city_id == null) {
+      Utils.showToast("Select city");
     } else if (pincode.isEmpty) {
-      Utils.showToast("Enter City ");
+      Utils.showToast("Enter Pincode ");
+    } else if (contactPersonName.isEmpty) {
+      Utils.showToast("Enter Contact Person Name ");
+    } else if (contactPersonRole.isEmpty) {
+      Utils.showToast("Enter Contact Person Role ");
+    } else if (mobileNumber.isEmpty) {
+      Utils.showToast("Enter Mobile Number ");
+    } else if (kitchenContactNumber.isEmpty) {
+      Utils.showToast("Enter Kitchen Contact Number ");
     } else if (licence.isEmpty) {
       Utils.showToast("Enter licence no ");
     } else if (dateCtl.text.isEmpty) {
@@ -924,20 +956,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
       Utils.showToast("please enter valid email");
     } else if (panCard.isEmpty) {
       Utils.showToast("Enter Pan Card ");
-    } else if (contactPersonName.isEmpty) {
-      Utils.showToast("Enter Contact Person Name ");
-    } else if (contactPersonRole.isEmpty) {
-      Utils.showToast("Enter Contact Person Role ");
-    } else if (mobileNumber.isEmpty) {
-      Utils.showToast("Enter Mobile Number ");
-    } else if (kitchenContactNumber.isEmpty) {
-      Utils.showToast("Enter Kitchen Contact Number ");
     } else if (gst.isEmpty) {
       Utils.showToast("Enter Gst Registration ");
-    } else if (_image == null) {
-      Utils.showToast(" Menu is empty");
     } else if (_uploadimage == null) {
       Utils.showToast("Document is empty");
+    } else if (_image == null) {
+      Utils.showToast(" Menu is empty");
     } else {
       showDetailsVerifyDialog(
           kitchenName,

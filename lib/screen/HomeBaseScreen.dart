@@ -583,6 +583,7 @@ class MyDrawersState extends State<MyDrawers> {
                       ),
                     ),
                   ),
+                  AppConstant().navBarHt()
                 ],
               ),
               physics: BouncingScrollPhysics(),

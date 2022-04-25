@@ -81,7 +81,14 @@ class _ActiveScreenState extends State<ActiveScreen> {
                     scrollDirection: Axis.vertical,
                     physics: BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return getOrderList(data[index]);
+                      return Column(
+                        children: [
+                          getOrderList(data[index]),
+                          (index + 1 == data.length)
+                              ? AppConstant().navBarHt()
+                              : SizedBox()
+                        ],
+                      );
                     },
                     itemCount: data.length,
                   ));

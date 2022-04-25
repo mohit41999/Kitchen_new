@@ -371,7 +371,8 @@ class _KitchenDetailScreenState extends State<KitchenDetailScreen> {
                     ),
                   ),
                 ),
-              )
+              ),
+              AppConstant().navBarHt()
             ],
           ),
           physics: BouncingScrollPhysics(),

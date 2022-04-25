@@ -192,9 +192,9 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
                             scrollDirection: Axis.vertical,
                             physics: BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return getLiveOffer(result[0]);
+                              return getLiveOffer(result[index]);
                             },
-                            itemCount: 10,
+                            itemCount: result.length,
                           );
                         }
                       }
@@ -374,8 +374,6 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  print(result.offerId +
-                      "heeeeeeeeeeeeeeeeeeeeyyyyyyyyyyyyyyyyyyyyyyyyy");
                   addArchiveOffer(result.offerId);
                 },
                 child: Text('Use again',

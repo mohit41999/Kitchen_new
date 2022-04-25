@@ -18,6 +18,7 @@ import 'package:kitchen/utils/Constents.dart';
 import 'package:kitchen/utils/HttpException.dart';
 import 'package:kitchen/utils/Utils.dart';
 import 'package:kitchen/utils/progress_dialog.dart';
+import 'package:kitchen/utils/Utils.dart';
 
 class MenuDetailScreen extends StatefulWidget {
   @override
@@ -411,6 +412,10 @@ class _MenuDetailScreenState extends State<MenuDetailScreen> {
                       )
                     ],
                   )),
+              SizedBox(
+                height: 10,
+              ),
+              AppConstant().navBarHt()
             ],
           ),
           physics: BouncingScrollPhysics(),

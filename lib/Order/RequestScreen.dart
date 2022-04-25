@@ -74,7 +74,14 @@ class _RequestScreenState extends State<RequestScreen> {
                   scrollDirection: Axis.vertical,
                   physics: BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return getOrderList(requestview.data[index]);
+                    return Column(
+                      children: [
+                        getOrderList(requestview.data[index]),
+                        (index + 1 == requestview.data.length)
+                            ? AppConstant().navBarHt()
+                            : SizedBox()
+                      ],
+                    );
                   },
                 ),
     );

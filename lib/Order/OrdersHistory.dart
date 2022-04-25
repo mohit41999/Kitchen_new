@@ -259,7 +259,14 @@ class _OrdersHistoryState extends State<OrdersHistory> {
                           scrollDirection: Axis.vertical,
                           physics: BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return getOrderList(orders[index]);
+                            return Column(
+                              children: [
+                                getOrderList(orders[index]),
+                                (index + 1 == orders.length)
+                                    ? AppConstant().navBarHt()
+                                    : SizedBox()
+                              ],
+                            );
                           },
                           itemCount: orders.length,
                         ),

@@ -74,7 +74,14 @@ class _UpcomingScreenState extends State<UpcomingScreen> {
                     scrollDirection: Axis.vertical,
                     physics: BouncingScrollPhysics(),
                     itemBuilder: (context, index) {
-                      return getOrderList(data[index]);
+                      return Column(
+                        children: [
+                          getOrderList(data[index]),
+                          (index + 1 == data.length)
+                              ? AppConstant().navBarHt()
+                              : SizedBox()
+                        ],
+                      );
                     },
                     itemCount: data.length,
                   ));

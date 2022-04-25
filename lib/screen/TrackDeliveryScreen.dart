@@ -60,21 +60,14 @@ class _TrackDeliveryScreenState extends State<TrackDeliveryScreen> {
                   InkWell(
                       onTap: () {
                         setState(() {
-                          _scaffoldKey.currentState.openDrawer();
+                          Navigator.pop(context);
                         });
                       },
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 16),
-                          child: Image.asset(
-                            Res.ic_menu,
-                            width: 30,
-                            height: 30,
-                            color: Colors.white,
-                          ),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 16),
+                        child: Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
                         ),
                       )),
                   SizedBox(
@@ -118,7 +111,14 @@ class _TrackDeliveryScreenState extends State<TrackDeliveryScreen> {
                             scrollDirection: Axis.vertical,
                             physics: BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return getItem(data[index]);
+                              return Column(
+                                children: [
+                                  getItem(data[index]),
+                                  (index + 1 == data.length)
+                                      ? AppConstant().navBarHt()
+                                      : SizedBox()
+                                ],
+                              );
                             },
                             itemCount: data.length,
                           ),
