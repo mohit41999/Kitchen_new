@@ -25,6 +25,10 @@ import 'package:kitchen/model/BeanDeletePackage.dart';
 import 'package:kitchen/model/BeanGetPackages.dart';
 
 class BasePackagescreen extends StatefulWidget {
+  final bool fromSettings;
+
+  const BasePackagescreen({Key key, this.fromSettings = false})
+      : super(key: key);
   @override
   _BasePackagescreenState createState() => _BasePackagescreenState();
 }
@@ -90,6 +94,11 @@ class _BasePackagescreenState extends State<BasePackagescreen> {
     progressDialog = ProgressDialog(context);
     return Scaffold(
       body: getPaged(),
+      appBar: (widget.fromSettings)
+          ? AppBar(
+              backgroundColor: AppConstant.appColor,
+            )
+          : null,
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: (isReplaceDefault == true)
           ? Padding(

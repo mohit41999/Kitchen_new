@@ -578,7 +578,7 @@ List<Days> days = <Days>[
 
 List<Meals> meals = <Meals>[
   Meals(title: 'Breakfast', isCheckedMeals: false),
-  Meals(title: 'Lunch & Dinner', isCheckedMeals: false),
+  Meals(title: 'Lunch&Dinner', isCheckedMeals: false),
   // Meals(title: 'Dinner', isCheckedMeals: false),
   Meals(title: 'Veg', isCheckedMeals: false),
   Meals(title: 'NonVeg', isCheckedMeals: false),

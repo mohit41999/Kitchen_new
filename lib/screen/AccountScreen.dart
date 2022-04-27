@@ -352,10 +352,6 @@ class _AccountScreenState extends State<AccountScreen> {
                                     fontFamily: AppConstant.fontRegular,
                                     fontSize: 16,
                                     color: Colors.black),
-                                decoration: InputDecoration.collapsed(
-                                  hintText:
-                                      password == "" ? "Password" : password,
-                                ),
                               ),
                             ),
                           )
@@ -386,7 +382,8 @@ class _AccountScreenState extends State<AccountScreen> {
                             ),
                           ),
                         ),
-                      )
+                      ),
+                      AppConstant().navBarHt()
                     ],
                   )),
             ],

@@ -253,7 +253,9 @@ class _MenuDetailScreenState extends State<MenuDetailScreen> {
                         Navigator.push<void>(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => BasePackagescreen()),
+                              builder: (_) => BasePackagescreen(
+                                    fromSettings: true,
+                                  )),
                         );
                       },
                       child: Container(
@@ -360,7 +362,8 @@ class _MenuDetailScreenState extends State<MenuDetailScreen> {
                                 padding: EdgeInsets.only(
                                     left: 10, right: 10, top: 16),
                                 child: Text(
-                                  "OTHER INFO",
+                                  "KITCHEN INFO",
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontFamily: AppConstant.fontBold,

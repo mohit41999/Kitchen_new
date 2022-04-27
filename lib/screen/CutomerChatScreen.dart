@@ -147,6 +147,10 @@ class _CutomerChatScreenState extends State<CutomerChatScreen> {
                     ],
                   )),
             ),
+            AppConstant().navBarHt(),
+            SizedBox(
+              height: 10,
+            ),
           ],
         ));
   }
@@ -201,8 +205,8 @@ class _CutomerChatScreenState extends State<CutomerChatScreen> {
   }
 
   Future<List<response.Chat>> getChat(BuildContext context) async {
-    FormData from = FormData.fromMap(
-        {"kitchen_id": userId, "token": "123456789", "customer_id": "190"});
+    FormData from =
+        FormData.fromMap({"kitchen_id": userId, "token": "123456789"});
     GetChat bean = await ApiProvider().getChat(from);
 
     list = bean.data.chat.reversed.toList();

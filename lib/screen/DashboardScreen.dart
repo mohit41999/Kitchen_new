@@ -114,10 +114,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                          child: Image.network(
-                            profileimage,
-                            width: 90,
-                            height: 90,
+                          child: CircleAvatar(
+                            radius: 45,
+                            backgroundImage: NetworkImage(
+                              profileimage,
+                            ),
                           ),
                         ),
                         Column(

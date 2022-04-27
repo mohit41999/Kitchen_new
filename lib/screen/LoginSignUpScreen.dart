@@ -470,7 +470,10 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 commonSizedBoc(),
                                 TextField(
                                   controller: MobileNumber,
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.phone,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(10),
+                                  ],
                                   decoration: InputDecoration(
                                     labelText: "Mobile Number",
                                     fillColor: Colors.grey,
@@ -485,7 +488,10 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 commonSizedBoc(),
                                 TextField(
                                   controller: KitchenContactNo,
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.phone,
+                                  inputFormatters: [
+                                    LengthLimitingTextInputFormatter(10),
+                                  ],
                                   decoration: InputDecoration(
                                     labelText: "Kitchen Contact Number",
                                     fillColor: Colors.grey,
@@ -509,7 +515,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 commonSizedBoc(),
                                 TextFormField(
                                   controller: FSSAILicenseNo,
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.phone,
                                   decoration: InputDecoration(
                                     labelText: "FSSAI Licence Number",
                                     fillColor: Colors.grey,
@@ -601,17 +607,19 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 commonSizedBoc(),
                                 Row(
                                   children: [
-                                    Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 16, top: 20, right: 16),
-                                        child: Text(
-                                          "Upload Documents",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily:
-                                                  AppConstant.fontRegular,
-                                              fontSize: 16),
-                                        )),
+                                    Expanded(
+                                      child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 16, top: 20, right: 16),
+                                          child: Text(
+                                            "Upload Documents",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily:
+                                                    AppConstant.fontRegular,
+                                                fontSize: 16),
+                                          )),
+                                    ),
                                     Expanded(
                                       child: InkWell(
                                         onTap: () {
@@ -668,17 +676,19 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                 commonSizedBoc(),
                                 Row(
                                   children: [
-                                    Padding(
-                                        padding: EdgeInsets.only(
-                                            left: 16, top: 20, right: 16),
-                                        child: Text(
-                                          "Upload Menu",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily:
-                                                  AppConstant.fontRegular,
-                                              fontSize: 16),
-                                        )),
+                                    Expanded(
+                                      child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 16, top: 20, right: 16),
+                                          child: Text(
+                                            "Upload Menu",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily:
+                                                    AppConstant.fontRegular,
+                                                fontSize: 16),
+                                          )),
+                                    ),
                                     Expanded(
                                       child: InkWell(
                                         onTap: () {
@@ -686,7 +696,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                         },
                                         child: Container(
                                           margin: EdgeInsets.only(
-                                              left: 60, top: 20, right: 50),
+                                              left: 16, top: 20, right: 16),
                                           height: 45,
                                           width: 100,
                                           color: Color(0xffF6F6F6),
@@ -1007,7 +1017,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
         "kitchenscontactnumber": kitchenContactNumber,
         "email": email,
         "FSSAILicenceNo": licence,
-        "expirydate": dateCtl.text..toString(),
+        "expirydate": dateCtl.text.toString(),
         "pancard": panCard,
         "gstnumber": gst,
         "menufile":
