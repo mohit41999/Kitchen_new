@@ -93,7 +93,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
   }
 
   Widget commonSizedBoc() => SizedBox(
-        height: 10,
+        height: 15,
       );
   _uploadimgFromGallery() async {
     var permission = await Permission.storage.request();
@@ -192,7 +192,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(8.0),
                               child: Container(
                                 height: 300,
                                 child: Column(
@@ -274,7 +274,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.only(
-                                            bottom: 16, left: 16),
+                                            bottom: 16, left: 8),
                                         child: Text(
                                           "Forgot password?",
                                           style: TextStyle(
@@ -298,7 +298,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                         borderRadius:
                                             BorderRadius.circular(13)),
                                     margin:
-                                        EdgeInsets.only(bottom: 16, right: 16),
+                                        EdgeInsets.only(bottom: 16, right: 8),
                                     child: Align(
                                         alignment: Alignment.bottomRight,
                                         child: Center(
@@ -319,14 +319,14 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(8.0),
                           child: Container(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
-                                  "Welcome,\n User",
+                                  "Welcome,\nUser",
                                   style: TextStyle(
                                       fontSize: 30,
                                       color: Colors.black,
@@ -340,6 +340,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                       color: Colors.black,
                                       fontFamily: AppConstant.fontBold),
                                 ),
+                                commonSizedBoc(),
                                 TextFormField(
                                   controller: Kitchen_Name,
                                   decoration: InputDecoration(
@@ -610,7 +611,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     Expanded(
                                       child: Padding(
                                           padding: EdgeInsets.only(
-                                              left: 16, top: 20, right: 16),
+                                              left: 0, top: 20, right: 16),
                                           child: Text(
                                             "Upload Documents",
                                             style: TextStyle(
@@ -679,7 +680,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                                     Expanded(
                                       child: Padding(
                                           padding: EdgeInsets.only(
-                                              left: 16, top: 20, right: 16),
+                                              left: 0, top: 20, right: 16),
                                           child: Text(
                                             "Upload Menu",
                                             style: TextStyle(
@@ -767,7 +768,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen>
                               decoration: BoxDecoration(
                                   color: Color(0xffFFA451),
                                   borderRadius: BorderRadius.circular(13)),
-                              margin: EdgeInsets.only(bottom: 16, right: 16),
+                              margin: EdgeInsets.only(bottom: 16, right: 8),
                               child: Align(
                                   alignment: Alignment.bottomRight,
                                   child: Center(
