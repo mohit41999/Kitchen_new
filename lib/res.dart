@@ -23,6 +23,8 @@ class Res {
   static const String ic_logout = "assets/images/ic_logout.png";
   static const String ic_default_menu = "assets/images/ic_default_menu.png";
   static const String ic_filter = "assets/images/ic_filter.png";
+  static const String ic_placeholder = "assets/images/ic_placeholder.png";
+  static const String ic_rider = "assets/images/ic_rider.png";
   static const String ic_vegetables = "assets/images/ic_vegetables.png";
   static const String ic_cross = "assets/images/ic_cross.png";
   static const String ic_check_desable = "assets/images/ic_check_desable.png";

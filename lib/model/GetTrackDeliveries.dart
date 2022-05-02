@@ -35,6 +35,8 @@ class GetTrackDeliveries {
 class GetTrackDeliveriesData {
   GetTrackDeliveriesData({
     this.orderNumber,
+    this.order_id,
+    this.orderitems_id,
     this.time,
     this.orderBy,
     this.deliveryAddress,
@@ -42,6 +44,8 @@ class GetTrackDeliveriesData {
   });
 
   String orderNumber;
+  String order_id;
+  String orderitems_id;
   String time;
   String orderBy;
   String deliveryAddress;
@@ -50,6 +54,8 @@ class GetTrackDeliveriesData {
   factory GetTrackDeliveriesData.fromJson(Map<String, dynamic> json) =>
       GetTrackDeliveriesData(
         orderNumber: json["order_number"],
+        orderitems_id: json["orderitems_id"],
+        order_id: json["order_id"],
         time: json["time"],
         orderBy: json["order_by"],
         deliveryAddress: json["delivery_address"],
@@ -59,6 +65,8 @@ class GetTrackDeliveriesData {
   Map<String, dynamic> toJson() => {
         "order_number": orderNumber,
         "time": time,
+        "order_id": order_id,
+        "orderitems_id": orderitems_id,
         "order_by": orderBy,
         "delivery_address": deliveryAddress,
         "total_bill": totalBill,

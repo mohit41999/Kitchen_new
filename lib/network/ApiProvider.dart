@@ -42,6 +42,7 @@ import 'package:kitchen/model/UpdateMenuDetails.dart';
 import 'package:kitchen/model/bankaccountsmodel.dart';
 import 'package:kitchen/model/breakfastmodel.dart';
 import 'package:kitchen/model/getMealScreenItems.dart';
+import 'package:kitchen/model/start_delivery.dart';
 import 'package:kitchen/network/EndPoints.dart';
 import 'package:kitchen/utils/DioLogger.dart';
 
@@ -147,6 +148,23 @@ class ApiProvider {
       Response response =
           await _dio.post(EndPoints.get_package_info, data: params);
       return BeanAddMenu.fromJson(json.decode(response.data));
+    } catch (error, stacktrace) {
+      print("Exception occurred: $error stackTrace: $stacktrace");
+      Map<dynamic, dynamic> map = _dioError.response.data;
+      if (_dioError.response.statusCode == 500) {
+        throwIfNoSuccess(map['message']);
+      } else {
+        throwIfNoSuccess("Something gone wrong.");
+      }
+    }
+    return null;
+  }
+
+  Future updateOrderTrack(FormData params) async {
+    try {
+      Response response =
+          await _dio.post(EndPoints.track_delivery_map, data: params);
+      return BeanStartDelivery.fromJson(jsonDecode(response.data));
     } catch (error, stacktrace) {
       print("Exception occurred: $error stackTrace: $stacktrace");
       Map<dynamic, dynamic> map = _dioError.response.data;

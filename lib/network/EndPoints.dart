@@ -19,6 +19,7 @@ class EndPoints {
   static const edit_bank_account = 'edit_bank_account.php';
   static const get_feedback = 'get_feedback.php';
   static const update_settings = 'update_settings.php';
+  static const track_delivery_map = 'track_delivery_map.php';
   static const update_account_detail = 'update_account_detail.php';
   //static const get_menu = 'get_menu.php';
   static const get_menu = 'get_breakfast_menu.php';

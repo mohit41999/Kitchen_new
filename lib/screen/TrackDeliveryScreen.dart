@@ -221,8 +221,10 @@ class _TrackDeliveryScreenState extends State<TrackDeliveryScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) =>
-                            StartDeliveryScreen('deliveryAddress', 'orderid')));
+                        builder: (context) => StartDeliveryScreen(
+                            data.deliveryAddress,
+                            data.order_id,
+                            data.orderitems_id)));
               },
               child: Container(
                 margin: EdgeInsets.only(left: 16, right: 16, top: 16),
@@ -259,8 +261,9 @@ class _TrackDeliveryScreenState extends State<TrackDeliveryScreen> {
 
   Future<GetTrackDeliveries> getTrialRequest(BuildContext context) async {
     try {
+      var user = await Utils.getUser();
       FormData from = FormData.fromMap({
-        "kitchen_id": '2',
+        "kitchen_id": user.data.id,
         "token": "123456789",
       });
 
