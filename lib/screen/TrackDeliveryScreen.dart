@@ -17,6 +17,7 @@ import 'package:kitchen/utils/Constents.dart';
 import 'package:kitchen/utils/Utils.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class TrackDeliveryScreen extends StatefulWidget {
   @override
@@ -218,13 +219,17 @@ class _TrackDeliveryScreenState extends State<TrackDeliveryScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => StartDeliveryScreen(
-                            data.deliveryAddress,
-                            data.order_id,
-                            data.orderitems_id)));
+                pushNewScreen(context,
+                    screen: StartDeliveryScreen(data.deliveryAddress,
+                        data.order_id, data.orderitems_id),
+                    withNavBar: false);
+                // Navigator.push(
+                //     context,
+                //     MaterialPageRoute(
+                //         builder: (context) => StartDeliveryScreen(
+                //             data.deliveryAddress,
+                //             data.order_id,
+                //             data.orderitems_id)));
               },
               child: Container(
                 margin: EdgeInsets.only(left: 16, right: 16, top: 16),

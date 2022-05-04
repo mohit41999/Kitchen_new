@@ -21,6 +21,7 @@ import 'package:kitchen/utils/HttpException.dart';
 import 'package:kitchen/utils/Utils.dart';
 import 'package:http/http.dart' as http;
 import 'package:kitchen/utils/progress_dialog.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class PaymentScreen extends StatefulWidget {
   @override
@@ -167,7 +168,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           scrollDirection: Axis.vertical,
                           physics: BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return getItem(data[index]);
+                            return Column(
+                              children: [
+                                getItem(data[index]),
+                                (index + 1 == data.length)
+                                    ? AppConstant().navBarHt()
+                                    : Container()
+                              ],
+                            );
                           },
                           itemCount: data.length,
                         ),
@@ -177,31 +185,37 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: GestureDetector(
-                onTap: () {
-                  withdrawAmountDialog();
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      withdrawAmountDialog();
 
 /*                  payment();*/
-                },
-                child: Container(
-                  margin:
-                      EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 16),
-                  height: 55,
-                  decoration: BoxDecoration(
-                      color: AppConstant.appColor,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: Center(
-                      child: Text(
-                        "WITHDRAW PAYMENT",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: AppConstant.fontBold,
-                            fontSize: 10),
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                          left: 16, right: 16, bottom: 16, top: 16),
+                      height: 55,
+                      decoration: BoxDecoration(
+                          color: AppConstant.appColor,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Center(
+                          child: Text(
+                            "WITHDRAW PAYMENT",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: AppConstant.fontBold,
+                                fontSize: 10),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                  AppConstant().navBarHt()
+                ],
               ),
             ),
             Padding(
@@ -216,12 +230,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BankAccounts(
-                                  user_id: userId,
-                                )));
+                    pushNewScreen(context,
+                        screen: BankAccounts(
+                          user_id: userId,
+                        ),
+                        withNavBar: false);
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => BankAccounts(
+                    //               user_id: userId,
+                    //             )));
                   },
                 ),
               ),
@@ -302,7 +321,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
     }
   }
 
-  Future<BeanPayment> withdrawPayment(String amount) async {
+  Future<BeanPayment> withdrawPayment(
+      String amount, BuildContext context) async {
     progressDialog.show();
     try {
       FormData from = FormData.fromMap({
@@ -456,7 +476,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ),
                     ),
                     onPressed: () {
-                      validation();
+                      validation(context);
 
                       print('Update the user info');
                       // return Navigator.of(context).pop(true);
@@ -469,7 +489,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         ),
       );
 
-  void validation() {
+  void validation(BuildContext context) {
     if (accountName.text.isEmpty) {
       Utils.showToast("Please Enter Account Name");
     } else if (bank.text.isEmpty) {
@@ -479,11 +499,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
     } else if (accountnumber.text.isEmpty) {
       Utils.showToast("Please Enter Account Number");
     } else {
-      addAccount();
+      addAccount(context);
     }
   }
 
-  Future<BeanAddAccount> addAccount() async {
+  Future<BeanAddAccount> addAccount(BuildContext context) async {
     progressDialog.show();
     try {
       FormData from = FormData.fromMap({
@@ -615,7 +635,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     if (amount.text.isEmpty) {
                       Utils.showToast("Please enter withdraw amount");
                     } else {
-                      withdrawPayment(amount.text);
+                      withdrawPayment(amount.text, context);
                     }
 
                     // return Navigator.of(context).pop(true);

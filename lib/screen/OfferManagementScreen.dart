@@ -16,6 +16,7 @@ import 'package:kitchen/utils/Constents.dart';
 import 'package:kitchen/utils/HttpException.dart';
 import 'package:kitchen/utils/Utils.dart';
 import 'package:kitchen/utils/progress_dialog.dart';
+import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 class OfferManagementScreen extends StatefulWidget {
   @override
@@ -562,18 +563,21 @@ class _OfferManagementScreenState extends State<OfferManagementScreen> {
   }
 
   addArchiveOffer(String offerId) async {
-    var data = await Navigator.push(context,
-        MaterialPageRoute(builder: (_) => AddOfferScreen(offerId: offerId)));
+    var data = await pushNewScreen(context,
+        screen: AddOfferScreen(offerId: offerId), withNavBar: false);
     if (data != null) {
       _future = getArchieveOffer(context);
+      print('io');
     }
+    print('io');
   }
 
   addliveOffer() async {
-    var data = await Navigator.push(context,
-        MaterialPageRoute(builder: (_) => AddOfferScreen(offerId: '')));
+    var data = await pushNewScreen(context,
+        screen: AddOfferScreen(offerId: ''), withNavBar: false);
     if (data != null) {
       futureLive = getLiveOffers(context);
     }
+    print('io');
   }
 }

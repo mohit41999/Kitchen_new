@@ -470,7 +470,7 @@ class StartDeliveryScreenState extends State<StartDeliveryScreen> {
   List<LatLng> polylineCoordinates = [];
   List<LatLng> polylineCoordinates2 = [];
   PolylinePoints polylinePoints = PolylinePoints();
-  String googleAPIKey = "AIzaSyBn9ZKmXc-MN12Fap0nUQotO6RKtYJEh8o";
+  String googleAPIKey = "AIzaSyCBZ1E4AGu6xP_VV4GWr_qjnOte9sFmh0A";
 
   var kitchenlat = 0.0;
   var kitchenlong = 0.0;
@@ -608,48 +608,6 @@ class StartDeliveryScreenState extends State<StartDeliveryScreen> {
                                 ),
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                InkWell(
-                                  onTap: () {
-                                    // Delivered(context, widget.orderid,
-                                    //     widget.orderitems_id);
-                                  },
-                                  child: Container(
-                                    width: 100,
-                                    margin:
-                                        EdgeInsets.only(right: 16, bottom: 16),
-                                    decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Color(0xff7ED39C),
-                                            Color(0xff089E90)
-                                          ],
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomCenter,
-                                          stops: [0, 1],
-                                        ),
-                                        borderRadius: BorderRadius.circular(8)),
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Center(
-                                            child: Text(
-                                              "Delivered",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    height: 40,
-                                  ),
-                                ),
-                              ],
-                            )
                           ],
                         ),
                       ),

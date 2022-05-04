@@ -74,69 +74,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/ic_bg.png
-    - assets/images/ic_logo.png
-    - assets/images/ic_bg_login.png
-    - assets/images/ic_back.png
-    - assets/images/ic_info.png
-    - assets/images/ic_verify.png
-    - assets/images/ic_dashboard.png
-    - assets/images/ic_menu.png
-    - assets/images/ic_notification.png
-    - assets/images/ic_chef.png
-    - assets/images/ic_pan.png
-    - assets/images/ic_menu_bottom.png
-    - assets/images/ic_order.png
-    - assets/images/ic_account.png
-    - assets/images/ic_graph.png
-    - assets/images/ic_people.png
-    - assets/images/ic_tracker.png
-    - assets/images/ic_discount.png
-    - assets/images/ic_feedback.png
-    - assets/images/ic_payment.png
-    - assets/images/ic_chat.png
-    - assets/images/ic_settings.png
-    - assets/images/ic_logout.png
-    - assets/images/ic_default_menu.png
-    - assets/images/ic_poha.png
-    - assets/images/ic_idle.png
-    - assets/images/ic_plus.png
-    - assets/images/ic_default_order.png
-    - assets/images/ic_veg.png
-    - assets/images/ic_chiken.png
-    - assets/images/ic_calendar.png
-    - assets/images/ic_filter.png
-    - assets/images/ic_vegetables.png
-    - assets/images/ic_cross.png
-    - assets/images/ic_check_desable.png
-    - assets/images/ic_right_arrow.png
-    - assets/images/ic_bg_menu.png
-    - assets/images/ic_packages_default.png
-    - assets/images/ic_menu_detail.png
-    - assets/images/ic_other_info.png
-    - assets/images/ic_breakfast.png
-    - assets/images/ic_dinner.png
-    - assets/images/ic_edit.png
-    - assets/images/ic_gallery.png
-    - assets/images/ic_contact.png
-    - assets/images/ic_loc.png
-    - assets/images/ic_messag.png
-    - assets/images/ic_phn.png
-    - assets/images/ic_pass.png
-    - assets/images/ic_noti.png
-    - assets/images/ic_create_package.png
-    - assets/images/ic_package_success.png
-    - assets/images/ic_send.png
-    - assets/images/ic_payment_default.png
-    - assets/images/ic_add_round.png
-    - assets/images/ic_down_arrow.png
-    - assets/images/ic_call.png
-    - assets/images/ic_white_arrow.png
-    - assets/images/ic_order_history.png
-    - assets/images/ic_percent.png
-    - assets/images/ic_date.png
-    - assets/images/ic_time_circle.png
-    - assets/images/Kitchen_cover.png
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

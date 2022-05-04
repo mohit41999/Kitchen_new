@@ -312,10 +312,13 @@ class MyDrawersState extends State<MyDrawers> {
                   InkWell(
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.push<void>(
-                        context,
-                        MaterialPageRoute(builder: (_) => FeedbackScreen()),
-                      );
+                      pushNewScreen(context,
+                          screen: FeedbackScreen(), withNavBar: false);
+                      // Navigator.push<void>(
+                      //   context,
+                      //
+                      //   MaterialPageRoute(builder: (_) => FeedbackScreen(),),
+                      // );
                     },
                     child: Container(
                       margin: EdgeInsets.only(left: 16, top: 30),

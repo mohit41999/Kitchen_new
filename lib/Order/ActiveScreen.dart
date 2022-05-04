@@ -372,6 +372,7 @@ class _ActiveScreenState extends State<ActiveScreen> {
 
   Future bottomsheetStatus(BuildContext context, String orderItemsId) {
     showModalBottomSheet(
+        useRootNavigator: true,
         shape: RoundedRectangleBorder(
           // <-- for border radius
           borderRadius: BorderRadius.only(

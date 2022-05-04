@@ -155,6 +155,7 @@ class _BankAccountsState extends State<BankAccounts> {
         onPressed: () {
           addAcountDetail(false);
         },
+        backgroundColor: AppConstant.appColor,
         child: Icon(Icons.add),
       ),
       body: (loading)
