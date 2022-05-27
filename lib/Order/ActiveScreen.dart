@@ -264,16 +264,16 @@ class _ActiveScreenState extends State<ActiveScreen> {
               // ),
               GestureDetector(
                 onTap: () {
-                  (data.status == 'Ready to pick')
-                      ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  (data.status == 'Order in Preparation')
+                      ? bottomsheetStatus(context, data.orderItemsId)
+                      : ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text('Order is ready to pick'),
-                        ))
-                      : bottomsheetStatus(context, data.orderItemsId);
+                        ));
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: Container(
-                    width: (data.status == 'Ready to pick') ? 150 : 200,
+                    width: (data.status == 'Order in Preparation') ? 200 : 150,
                     height: 42,
                     decoration: BoxDecoration(
                         color: Colors.black,
@@ -288,10 +288,10 @@ class _ActiveScreenState extends State<ActiveScreen> {
                               fontSize: 13,
                               fontFamily: AppConstant.fontBold),
                         ),
-                        (data.status == 'Ready to pick')
-                            ? Container()
-                            : Icon(Icons.keyboard_arrow_down,
-                                color: Colors.white),
+                        (data.status == 'Order in Preparation')
+                            ? Icon(Icons.keyboard_arrow_down,
+                                color: Colors.white)
+                            : Container(),
                       ],
                     ),
                   ),
